@@ -1,0 +1,91 @@
+@prefix : <https://github.com/lesliesikos/ontology/blob/main/autopsy.ttl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://github.com/owlontology/blob/main/autopsy.owl> a owl:Ontology ; dc:title "Autopsy Ontology"@en ; dc:description "The Autopsy Ontology is a digital forensics ontology aligned with the industry-standard Autopsy tool’s terminology."@en ; dc:creator "Dr. Leslie F. Sikos" ; dc:contributor "Allan Korol" .
+
+# Classes
+
+:DataArtifact a owl:Class .
+	:Account a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:AssociatedObject a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:DataSourceUsage a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:EmailMessage a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:EncryptionDetected a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:ExtensionMismatchDetected a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:InstalledProgram a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:KeywordHit a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:Metadata a owl:Class ; rdfs:subclassOf :DataArtifact .
+		:EXIFMetadata a owl:Class ; rdfs:subclassOf :Metadata .
+		:FileMetadata a owl:Class ; rdfs:subclassOf :Metadata .
+	:OperatingSystemInformation a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:RecentDocument a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:RecycleBin a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:RemoteDrive a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:ShellBag a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:USBDeviceAttached a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:UserContentSuspected a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:WebCategory a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:WebBookmark a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:WebCookie a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:WebHistory a owl:Class ; rdfs:subclassOf :DataArtifact .
+	:WebSearch a owl:Class ; rdfs:subclassOf :DataArtifact .
+		
+:DataSource a owl:Class .
+	:Host a owl:Class ; rdfs:subclassOf :DataSource .
+
+# Object Property
+
+:sourceHost a owl:ObjectProperty ; rdf:domain :Account , :EmailMessage , :ExtensionMismatch , :InstalledProgram , :Metadata , :OperatingSystemInformation , :RecentDocument , :RecycleBin , :USBDeviceAttached , :WebBookmark , :WebCookie , :WebHistory , :WebSearch ; rdf:range :Host . 
+	
+# Datatype Properties
+	
+:accessed a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:dateTime . 
+:attached a owl:DatatypeProperty ; rdf:domain :USBDeviceAttached; rdf:range xsd:dateTime . 
+:category a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :EmailMessage , :WebSearch , :EXIFMetadata , :OperatingSystemInformation , :EncryptionDetected , :ExtensionMismatchDetected , :RemoteDrive , :Account , :DataSourceUsage , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :RecycleBin , :ShellBag ; rdfs:range xsd:string . 
+:changed a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:dateTime . 
+:created a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:dateTime . 
+:createdDateTime a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :WebSearch , :EXIFMetadata , :EncryptionDetected , :ExtensionMismatchDetected , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :ShellBag ; rdfs:range xsd:string . 
+:deviceID a owl:DatatypeProperty ; rdf:domain :USBDeviceAttached ; rdf:range xsd:string . 
+:deviceMake a owl:DatatypeProperty ; rdf:domain :USBDeviceAttached ; rdf:range xsd:string . 
+:deviceModel a owl:DatatypeProperty ; rdf:domain :USBDeviceAttached ; rdf:range xsd:string . 
+:domain a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :WebSearch , :WebCategory ; rdfs:range xsd:string . 
+:emailFrom a owl:DatatypeProperty ; rdf:domain :EmailMessage ; rdf:range xsd:string . 
+:emailTo a owl:DatatypeProperty ; rdf:domain :EmailMessage; rdf:range xsd:string .
+:fileNameAllocation a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:hashLookupResult a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:hostSha1 a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :EmailMessage , :WebSearch , :EXIFMetadata , :OperatingSystemInformation , :EncryptionDetected , :ExtensionMismatchDetected , :RemoteDrive , :Account , :DataSourceUsage , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :RecycleBin , :ShellBag ; rdfs:range xsd:string . 
+:id a owl:DatatypeProperty ; rdf:domain :Account ; rdf:range xsd:string . 
+:installed a owl:DatatypeProperty ; rdf:domain :InstalledProgram ; rdf:range xsd:dateTime . 
+:internalID a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:positiveInteger . 
+:md5 a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:messageId a owl:DatatypeProperty ; rdf:domain :EmailMessage ; rdf:range xsd:string . 
+:metadataAllocation a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:mimeType a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:modified a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:dateTime . 
+:name a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:owner a owl:DatatypeProperty ; rdf:domain :Metadata, :OperatingSystemInformation ; rdf:range xsd:string . 
+:path a owl:DatatypeProperty ; rdf:domain :OperatingSystemInformation , :RecentDocument ; rdf:range xsd:string . 
+:processorArchitecture a owl:DatatypeProperty ; rdf:domain :OperatingSystemInformation ; rdf:range xsd:string . 
+:productID a owl:DatatypeProperty ; rdf:domain :OperatingSystemInformation ; rdf:range xsd:string . 
+:programName a owl:DatatypeProperty ; rdf:domain :InstalledProgram , :Metadata , :OperatingSystemInformation ; rdf:range xsd:string . 
+:receivedDateTime a owl:DatatypeProperty ; rdf:domain :EmailMessage; rdf:range xsd:dateTime .
+:sha256 a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:size a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:positiveInteger . 
+:sourceFile a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :EmailMessage , :WebSearch , :EXIFMetadata , :EncryptionDetected , :ExtensionMismatchDetected , :RemoteDrive , :Account , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :RecycleBin , :ShellBag ; rdfs:range xsd:string . 
+:sourceFileMd5 a owl:DatatypeProperty ; rdfs:domain :WebBookmark ; rdfs:range xsd:string . 
+:sourceMime a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :WebSearch , :EXIFMetadata , :EncryptionDetected , :ExtensionMismatchDetected  , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :ShellBag ; rdfs:range :mime . 
+:subject a owl:DatatypeProperty ; rdf:domain :EmailMessage ; rdfs:range xsd:string . 
+:temporaryFilesDirectory a owl:DatatypeProperty ; rdfs:domain :OperatingSystemInformation ; rdfs:range xsd:string . 
+:text a owl:DatatypeProperty ; rdfs:domain :WebSearch ; rdfs:range xsd:string . 
+:threadId a owl:DatatypeProperty ; rdfs:domain :EmailMessage ; rdfs:range xsd:string . 
+:timeDeleted a owl:DatatypeProperty ; rdf:domain :RecycleBin ; rdfs:range xsd:dateTime . 
+:title a owl:DatatypeProperty ; rdfs:domain :WebBookmark ; rdfs:range xsd:string . 
+:type a owl:DatatypeProperty ; rdfs:domain :FileMetadata ; rdfs:range xsd:string . 
+:typeName a owl:DatatypeProperty ; rdfs:domain :WebBookmark , :WebCookie , :WebHistory , :RecentDocument , :InstalledProgram , :KeywordHit , :USBDeviceAttached , :EmailMessage , :WebSearch , :EXIFMetadata , :OperatingSystemInformation , :EncryptionDetected , :ExtensionMismatchDetected , :RemoteDrive , :Account , :DataSourceUsage , :AssociatedObject , :UserContentSuspected , :Metadata , :WebCategory , :RecycleBin , :ShellBag ; rdfs:range xsd:string . 
+:url a owl:DatatypeProperty ; rdfs:domain :WebBookmark ; rdfs:range xsd:string . 
+:userName a owl:DatatypeProperty ; rdf:domain :RecycleBin ; rdf:range xsd:string . 
