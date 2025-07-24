@@ -1,4 +1,4 @@
-@prefix : <https://github.com/lesliesikos/ontology/blob/main/autopsy.ttl#> .
+@prefix : <https://github.com/owlontology/digitalforensics/blob/main/autopsy.owl#> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-<https://github.com/owlontology/blob/main/autopsy.owl> a owl:Ontology ; dc:title "Autopsy Ontology"@en ; dc:description "The Autopsy Ontology is a digital forensics ontology aligned with the industry-standard Autopsy tool’s terminology."@en ; dc:creator "Dr. Leslie F. Sikos" ; dc:contributor "Allan Korol" .
+<https://github.com/owlontology/digitalforensics/blob/main/autopsy.owl> a owl:Ontology ; dc:title "Autopsy Ontology"@en ; dc:description "The Autopsy Ontology is a digital forensics ontology aligned with the industry-standard Autopsy tool’s terminology."@en ; dc:creator "Dr. Leslie F. Sikos" ; dc:contributor "Allan Korol" .
 
 # Classes
 
